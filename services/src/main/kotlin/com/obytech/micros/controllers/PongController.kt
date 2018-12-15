@@ -1,14 +1,18 @@
 package com.obytech.micros.controllers
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Profile
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
 @Profile("pong")
-class Hello {
+class PongController (@Value("\${server.port}") var port: Int) {
+
+    private val pingCounter = AtomicInteger()
 
     @RequestMapping(value = ["/{name}"])
     fun hello(@PathVariable name: String = "world"): String = "hello ${name.formatName()}"
@@ -25,5 +29,5 @@ class Hello {
     }
 
     @GetMapping("/ping")
-    fun ping() = "pong, pong, ponngggg."
+    fun ping() = "pong, pong, ponngggg. (${pingCounter.incrementAndGet()}) [$port]".formatName()
 }

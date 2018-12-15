@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ${spring.profiles.active}-service
+
+eureka:
+
+  instance:
+    hostname: localhost
+
+  server:
+    host: localhost
+    port: 1111
+
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://${eureka.server.host}:${eureka.server.port}/eureka}
+
+instance:
+  preferIpAddress: true
+
