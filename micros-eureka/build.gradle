@@ -40,24 +40,13 @@ repositories {
 	maven { url "https://repo.spring.io/milestone" }
 }
 
-ext['springCloudVersion'] = 'Greenwich.M3'
+ext['springCloudVersion'] = 'Greenwich.RC1'
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-actuator')
-	implementation('org.springframework.boot:spring-boot-starter-data-rest')
-	implementation('org.springframework.boot:spring-boot-starter-webflux')
-	implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-	
-	implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
-	implementation('io.github.openfeign:feign-gson:9.3.1')
-	
-	implementation('org.springframework.cloud:spring-cloud-starter-sleuth')
-	
+	implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	testImplementation('io.projectreactor:reactor-test')
 }
 
 dependencyManagement {
