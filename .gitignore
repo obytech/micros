@@ -31,3 +31,4 @@ gradle/
 /.ssh/
 
 services/out/
+services/build/
