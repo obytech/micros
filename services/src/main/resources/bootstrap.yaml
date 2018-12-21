@@ -14,6 +14,8 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://${eureka.server.host}:${eureka.server.port}/eureka}
+      leaseRenewalIntervalInSeconds: 5
+      lease-expiration-duration-in-seconds: 5
 
 instance:
   preferIpAddress: true
