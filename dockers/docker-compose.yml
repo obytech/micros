@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  eureka:
+    build: ./eureka
+    ports:
+      - "1111:1111"
+
+    networks:
+      micronet:
+        aliases:
+          - eureka
+
+  pong:
+    build: ./pong
+    #    ports:
+    #  - "8080:8080"
+
+        #    container_name: pong-service
+
+    depends_on:
+      - eureka
+
+    networks:
+      - micronet
+
+  ping:
+    build: ./ping
+    #   ports:
+    #   - "8081:8081"
+
+    networks:
+      - micronet
+
+    depends_on:
+      - pong
+
+networks:
+  micronet:
+
+
+
+
+ 
