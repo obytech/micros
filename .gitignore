@@ -32,3 +32,6 @@ gradle/
 
 services/out/
 services/build/
+
+### Docker ###
+dockers/**/*.jar
