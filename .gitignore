@@ -33,5 +33,7 @@ gradle/
 services/out/
 services/build/
 
+micros-config/out/
+
 ### Docker ###
 dockers/**/*.jar
