@@ -15,3 +15,21 @@ subprojects {
     version = "1.0"
 }
 
+
+task<Copy>("copyEureka") {
+    from (file("$buildDir/../micros-eureka/build/libs/micros-eureka-0.0.1-SNAPSHOT.jar").absoluteFile)
+    into (file("$buildDir/../dockers/eureka").absoluteFile)
+}
+
+task<Copy>("copyPing") {
+    from (file("$buildDir/../services/build/libs/services-0.0.1-SNAPSHOT.jar").absoluteFile)
+    into (file("$buildDir/../dockers/ping").absoluteFile)
+}
+
+task<Copy>("copyPong") {
+    from (file("$buildDir/../services/build/libs/services-0.0.1-SNAPSHOT.jar").absoluteFile)
+    into (file("$buildDir/../dockers/pong").absoluteFile)
+}
+
+task("copyArtifacts")
+        .dependsOn("copyEureka", "copyPing", "copyPong")
