@@ -6,10 +6,10 @@ spring:
     config:
       server:
         git:
-          uri: ssh://localhost/config-repo
+          uri: ssh://6.6.6.25/~/git/micros-config
           clone-on-start: true
 
 security:
   user:
-    name: root
-    password: t00r
+    name: bot
+    password: 1D0n0S&
