@@ -1,6 +1,7 @@
 package com.obytech.micros.controllers
 
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.context.annotation.Profile
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -10,7 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
 @Profile("pong")
-class PongController (@Value("\${server.port}") var port: Int) {
+@RefreshScope
+class PongController (@Value("\${server.port}") var port: Int,
+                      @Value("\${pong.msg:pong, pong, ponngggg. }") var msg: String) {
+
+
 
     private val pingCounter = AtomicInteger()
 
@@ -29,5 +34,6 @@ class PongController (@Value("\${server.port}") var port: Int) {
     }
 
     @GetMapping("/ping")
-    fun ping() = "pong, pong, ponngggg. (${pingCounter.incrementAndGet()}) [$port]".formatName()
+    @RefreshScope
+    fun ping() = "$msg(${pingCounter.incrementAndGet()}) [$port]".formatName()
 }

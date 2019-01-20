@@ -2,6 +2,9 @@ spring:
   application:
     name: ${spring.profiles.active}-service
 
+  cloud:
+    config: http://localhost:8888
+
 eureka:
 
   instance:
@@ -18,4 +21,8 @@ eureka:
       leaseRenewalIntervalInSeconds: 5
       lease-expiration-duration-in-seconds: 5
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
