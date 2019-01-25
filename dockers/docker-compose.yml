@@ -1,6 +1,21 @@
 version: '3'
 
 services:
+
+  config:
+    build: ./config-service
+    ports:
+      - "8888:8888"
+
+    volumes:
+      - /dvlp/Development/workspace/Roadmap/micros/dockers/config-service/config.prop:/config
+
+    networks:
+      micronet:
+        aliases:
+          - config
+
+
   eureka:
     build: ./eureka
     ports:
@@ -11,6 +26,10 @@ services:
         aliases:
           - eureka
 
+    depends_on:
+    - config
+
+
   pong:
     build: ./pong
     #    ports:
@@ -19,6 +38,7 @@ services:
         #    container_name: pong-service
 
     depends_on:
+      - config
       - eureka
 
     networks:
@@ -34,6 +54,7 @@ services:
 
     depends_on:
       - pong
+      - eureka
 
 networks:
   micronet:

@@ -1,6 +1,13 @@
 server:
   port: 1111
 
+spring:
+  application:
+    name: eureka-server
+
+  cloud:
+    config: http://localhost:8888
+
 eureka:
 
   instance:

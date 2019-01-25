@@ -11,5 +11,6 @@ rootProject.name = "micros"
 
 
 include(":micros-eureka")
+include(":micros-config")
 include(":services")
 
