@@ -16,6 +16,10 @@ subprojects {
 }
 
 
+task<Copy>("copyConfig") {
+    from (file("$buildDir/../micros-config/build/libs/micros-config-0.0.1-SNAPSHOT.jar").absoluteFile)
+    into (file("$buildDir/../dockers/config-service").absoluteFile)
+}
 task<Copy>("copyEureka") {
     from (file("$buildDir/../micros-eureka/build/libs/micros-eureka-0.0.1-SNAPSHOT.jar").absoluteFile)
     into (file("$buildDir/../dockers/eureka").absoluteFile)
@@ -32,4 +36,4 @@ task<Copy>("copyPong") {
 }
 
 task("copyArtifacts")
-        .dependsOn("copyEureka", "copyPing", "copyPong")
+        .dependsOn("copyConfig", "copyEureka", "copyPing", "copyPong")

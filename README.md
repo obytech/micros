@@ -13,7 +13,7 @@ Run: `gradlew bootJar copyArtifacts`
 then, in order to boot the application, first goto to dockers dir, then boot with docker-compose:
 ```
 cd dockers
-docker-compose up
+docker-compose build && docker-compose up
 ```
 
 Let the services sync and the whole app to get stable, then a periodic msg will be printed.
