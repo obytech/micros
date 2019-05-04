@@ -14,5 +14,6 @@ CMD [\
     "java", "-jar", "services-0.0.1-SNAPSHOT.jar", \
         "--spring.profiles.active=ping", \
         "--eureka.server.host=eureka", \
-        "--server.port=8080" \
+        "--server.port=8080", \
+        "--spring.cloud.config.uri=http://config:8888" \
     ]
