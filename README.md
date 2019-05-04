@@ -18,6 +18,6 @@ docker-compose build && docker-compose up
 
 Let the services sync and the whole app to get stable, then a periodic msg will be printed.
 
-- Pong message can be modified:
+## Update Pong message
 Update file `dockers/config-service/config.prop/pong-service.yml` and commit it.
-Then, send POST request to 'http://<PONG-service>:8080/actuator/refresh', and the update should be reflected.
+Then, send POST request to `http://<PONG-service>:8080/actuator/refresh`, and the update should be reflected.
