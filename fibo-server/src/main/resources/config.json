@@ -1,0 +1,10 @@
+{
+	"service.name": "fibo-service",
+	"config": {
+		"host": "localhost",
+		"port": 8888,
+		"branch": "master"
+	},
+
+	"motd": "Have a nice day"
+}
