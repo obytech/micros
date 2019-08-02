@@ -41,22 +41,25 @@ private fun initRemoteConfig(vertx: Vertx, json: JsonObject) {
     val opts = WebClientOptions()
             .setUserAgent("pizdatz/blat")
 
+    var motd: String? = null
     WebClient.create(vertx, opts)
             .get(configPort, configHost, "/$serviceName/$configBranch")
 //            .putHeader("accept", "application/json;charset=UTF-8")
             .send {
-                if (!it.succeeded()) {
-                    println("Failed to retrieve response: ${it.cause()}")
-                    return@send
+                try {
+                    if (!it.succeeded()) {
+                        println("Failed to retrieve response: ${it.cause()}")
+                        return@send
+                    }
+
+                    val remoteConfig = it.result().bodyAsJsonObject()
+                    motd = remoteConfig.getJsonArray("propertySources")
+                            .getJsonObject(0)
+                            .getJsonObject("source")
+                            .getString("motd")
+                } finally {
+                    FiboController(motd ?: json.getString("motd")).init()
                 }
-
-                val remoteConfig = it.result().bodyAsJsonObject()
-                val motd = remoteConfig.getJsonArray("propertySources")
-                        .getJsonObject(0)
-                        .getJsonObject("source")
-                        .getString("motd")
-
-                FiboController(motd).init()
             }
 }
 

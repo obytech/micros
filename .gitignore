@@ -36,5 +36,7 @@ services/build/
 micros-config/out/
 micros-config/build/
 
+fibo-server/build/
+
 ### Docker ###
 dockers/**/*.jar
